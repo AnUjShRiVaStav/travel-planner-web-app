@@ -16,22 +16,20 @@ type CityCardProps = {
 export default function CityCard({ city, showRemoveButton = false }: CityCardProps) {
   const { name, weather, country, places } = city;
   const { addCity, savedCities, removeCity } = useAppContext();
+  const searchCityName = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
   const pathname = usePathname();
 
   const handleSaveCity = () => {
     const isAlreadySaved = savedCities.find((c: City) => c.name === name);
     if (isAlreadySaved) {
-      // Toast is handled in AppContext
       return;
     } else {
       addCity(city);
-      // Toast is handled in AppContext
     }
   };
 
   const handleRemoveCity = () => {
     removeCity(name);
-    // Toast is handled in AppContext
   };
 
   const handleKeyDown = (e: React.KeyboardEvent, action: 'save' | 'remove') => {
@@ -66,18 +64,18 @@ export default function CityCard({ city, showRemoveButton = false }: CityCardPro
   };
 
   return (
-    <article 
+    <article
       className="bg-gradient-to-br from-white to-gray-50 dark:from-slate-800 dark:to-gray-900 text-gray-900 dark:text-white rounded-3xl p-8 shadow-xl mt-8 border border-gray-200 dark:border-gray-700 transition-all duration-500 ease-out hover:shadow-2xl hover:scale-[1.02] transform card-enter-active scale-in"
       aria-labelledby={`city-title-${name}`}
     >
       <div className="flex flex-col md:flex-row justify-between">
         <div className="flex-1 slide-in-left">
           <header>
-            <h2 
+            <h2
               id={`city-title-${name}`}
               className="text-4xl font-extrabold tracking-tight fade-in"
             >
-              {name}, {country?.name?.common}
+              {searchCityName}, {country?.name?.common}
             </h2>
             <p className="text-sm text-gray-600 dark:text-gray-300 mb-2 fade-in stagger-1">
               {country?.region} — {country?.subregion}
@@ -125,7 +123,7 @@ export default function CityCard({ city, showRemoveButton = false }: CityCardPro
               </div>
             </div>
 
-            <div 
+            <div
               className="grid grid-cols-3 gap-4 text-sm text-gray-600 dark:text-gray-300"
               role="list"
               aria-label="Weather details"
@@ -163,9 +161,9 @@ export default function CityCard({ city, showRemoveButton = false }: CityCardPro
               }}
             />
           ) : null}
-          <div 
+          <div
             className={`text-8xl ${weather?.weather?.[0]?.icon ? 'hidden' : ''} float`}
-            role="img" 
+            role="img"
             aria-label={`${weather?.weather?.[0]?.description || 'weather'} icon`}
           >
             {getWeatherEmoji(weather?.weather?.[0]?.main)}
@@ -175,7 +173,7 @@ export default function CityCard({ city, showRemoveButton = false }: CityCardPro
 
       <section className="mt-10 slide-in-up stagger-4" aria-labelledby={`places-section-${name}`}>
         <div className="flex items-center justify-between mb-4 border-b border-gray-300 dark:border-gray-600 pb-2">
-          <h3 
+          <h3
             id={`places-section-${name}`}
             className="text-xl font-bold fade-in"
           >
@@ -183,15 +181,15 @@ export default function CityCard({ city, showRemoveButton = false }: CityCardPro
           </h3>
         </div>
 
-        <div 
+        <div
           className="grid grid-cols-1 md:grid-cols-2 gap-4"
           role="list"
           aria-label={`Places to visit in ${name}`}
         >
           {places.length > 0 ? (
             places.map((place: Place, index: number) => (
-              <div 
-                key={place.fsq_place_id} 
+              <div
+                key={place.fsq_place_id}
                 className={`bg-gray-50 dark:bg-white/5 backdrop-blur-md p-4 rounded-lg border border-gray-200 dark:border-gray-600 transition-all duration-300 ease-out hover:shadow-lg hover:scale-105 transform slide-in-up`}
                 style={{ animationDelay: `${index * 100}ms` }}
                 role="listitem"
