@@ -1,0 +1,27 @@
+{
+  "name": "TMTC Travel Planner",
+  "short_name": "Travel Planner",
+  "description": "Plan your travel like a pro! Search for cities, get weather information, and discover places to visit.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f9fafb",
+  "theme_color": "#3b82f6",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/globe.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/next.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "categories": ["travel", "weather", "utilities"],
+  "lang": "en",
+  "dir": "ltr"
+} 
