@@ -2,6 +2,10 @@
 
 A modern travel planning application built with Next.js that helps you discover cities, check weather conditions, and explore places of interest with an interactive map.
 
+## 🌐 Live Demo
+
+Check out the live application: [https://travel-planner-web-app.netlify.app/](https://travel-planner-web-app.netlify.app/)
+
 ## Features
 
 - **City Search**: Search for cities worldwide and get detailed information
@@ -114,8 +118,8 @@ To learn more about the technologies used:
 - [React Leaflet](https://react-leaflet.js.org/) - React components for Leaflet maps
 - [Tailwind CSS](https://tailwindcss.com/) - utility-first CSS framework
 
-## Deploy on Vercel
+## Deploy on Netlify
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The easiest way to deploy your Next.js app is to use the [Netlify Platform](https://www.netlify.com/) for seamless deployment and hosting.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
