@@ -13,19 +13,33 @@ A modern travel planning application built with Next.js that helps you discover 
 
 ## Getting Started
 
-First, run the development server:
+### Installation
 
 ```bash
-npm run dev
-# or
+yarn install
+```
+
+### Running Locally
+
+```bash
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+### Environment Variables
+
+To run this application locally, you need to generate the following API keys:
+
+- **WEATHER_API_KEY**: Required for weather data functionality
+- **PLACES_API_KEY**: Required for places of interest data
+
+Create a `.env.local` file in the root directory and add your API keys:
+
+```env
+WEATHER_API_KEY=your_weather_api_key_here
+PLACES_API_KEY=your_places_api_key_here
+```
 
 ## Map Features
 
@@ -47,20 +61,48 @@ The application includes an interactive map powered by Leaflet that displays:
 - **Testing**: Jest with React Testing Library
 - **Icons**: React Icons
 - **Notifications**: React Hot Toast
+- **Package Manager**: Yarn
+- **Environment Variables**: WEATHER_API_KEY, PLACES_API_KEY
 
 ## Project Structure
 
 ```
 src/
-├── app/                 # Next.js app router pages
-├── components/          # Reusable React components
-│   ├── CityCard.tsx     # City information display
-│   ├── CityMap.tsx      # Interactive map component
-│   ├── DynamicCityMap.tsx # SSR-safe map wrapper
-│   └── SearchBar.tsx    # City search functionality
-├── lib/                 # API and utility functions
-├── types/               # TypeScript type definitions
-└── __tests__/           # Test files
+├── app/                   # Next.js app router pages
+│   ├── api/               # API routes
+│   │   ├── robots.txt/    # Robots.txt API route
+│   │   └── search/        # Search API endpoint
+│   ├── city/              # City pages
+│   │   └── [name]/        # Dynamic city route
+│   │       ├── layout.tsx # City page layout
+│   │       └── page.tsx   # City detail page
+│   ├── dashboard/         # Dashboard page
+│   ├── globals.css        # Global styles
+│   ├── layout.tsx         # Root layout
+│   └── page.tsx           # Home page
+├── components/            # Reusable React components
+│   ├── CityCard.tsx       # City information display
+│   ├── CityCard.test.tsx  # CityCard component tests
+│   ├── CityMap.tsx        # Interactive map component
+│   ├── CityMap.test.tsx   # CityMap component tests
+│   ├── Navigation.tsx     # Navigation component
+│   ├── Navigation.test.tsx # Navigation component tests
+│   ├── Providers.tsx      # Context providers
+│   ├── SearchBar.tsx      # City search functionality
+│   └── SearchBar.test.tsx # SearchBar component tests
+├── context/               # React context providers
+│   └── AppContext.tsx     # Main app context
+├── lib/                   # API and utility functions
+│   ├── api.ts             # API functions
+│   ├── api.test.ts        # API tests
+│   ├── cache.ts           # Caching utilities
+│   └── cache.test.ts      # Cache tests
+├── test/                  # Test files
+│   ├── integration/       # Integration tests
+│   ├── snapshots/         # Snapshot tests
+│   └── utils/             # Test utilities
+└── types/                 # TypeScript type definitions
+    └── index.ts           # Type definitions
 ```
 
 ## Learn More
